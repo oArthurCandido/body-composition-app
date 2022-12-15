@@ -21,9 +21,9 @@ const navigation = (): VerticalNavItemsType => {
       path: '/'
     },
     {
-      title: 'Account Settings',
+      title: 'Calculadora Corporal',
       icon: AccountCogOutline,
-      path: '/account-settings'
+      path: '/measures-form/measures-form/'
     },
     {
       sectionTitle: 'Pages'
