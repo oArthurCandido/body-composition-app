@@ -14,12 +14,12 @@ import TextField from '@mui/material/TextField';
 import HumanMale from 'mdi-material-ui/HumanMale'
 import HumanFemale from 'mdi-material-ui/HumanFemale'
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import Button from '@mui/material/Button';
+
 
 interface FormLayoutsProps {
   sex: string;
   setSex: (
-    dispatch: any,
+
     newSexOption: string,
   ) => void;
   age: number;
