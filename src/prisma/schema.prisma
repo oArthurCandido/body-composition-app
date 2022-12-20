@@ -11,11 +11,37 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  email        String   @unique
-  name         String?
-  birthYear    Int?
-  bodyFatIndex Float?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  email     String    @unique
+  name      String?
+  birthYear Int?
+  measures  Measure[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Measure {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  user            User             @relation(fields: [userId], references: [id])
+  userId          String
+  peso            Float?
+  altura          Float?
+  cintura         Float?
+  quadril         Float?
+  pescoco         Float?
+  braco           Float?
+  coxa            Float?
+  panturrilha     Float?
+  bodyFatMeasures BodyFatMeasure[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model BodyFatMeasure {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  measure   Measure  @relation(fields: [measureId], references: [id])
+  measureId String
+  bodyFat   Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

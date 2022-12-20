@@ -8,6 +8,7 @@ export default async (req : any, res : any) => {
         if (req.query.id) {
           const user = await getUserById(req.query.id)
 
+
           return res.status(200).json(user)
         } else {
           const users = await getAllUsers()
@@ -16,8 +17,8 @@ export default async (req : any, res : any) => {
         }
       }
       case 'POST': {
-        const {name, email, birthYear, bodyFatIndex} = req.body
-        const user = await createUser({name, email, birthYear, bodyFatIndex})
+        const {name, email, birthYear} = req.body
+        const user = await createUser({name, email, birthYear})
 
         return res.status(200).json(user)
       }

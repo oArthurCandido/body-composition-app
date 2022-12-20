@@ -2,8 +2,6 @@ import prisma from './prisma'
 
 export const getAllUsers = async () => {
   const users = await prisma.user.findMany({})
-  console.log("🚀 ~ file: user.ts:5 ~ getAllUsers ~ users", users)
-
 
   return users
 }
@@ -14,6 +12,7 @@ export const getUserById = async (id : string) => {
       id
     }
   })
+  console.log("🚀 ~ file: user.ts:15 ~ getUserById ~ user", user)
 
   return user
 }
@@ -23,8 +22,8 @@ export const createUser = async (data: any) => {
     data: {
       email: data.email,
       name: data.name,
-      birthYear: data.birthYear,
-      bodyFatIndex: data.bodyFatIndex
+      birthYear: data.birthYear
+
     }
   })
 

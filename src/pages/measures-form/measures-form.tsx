@@ -15,7 +15,7 @@ import FormUserSettings from 'src/views/form-layouts/FormUserSettings'
 
 // ** Third Party Styles Imports
 import 'react-datepicker/dist/react-datepicker.css'
-import { Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardHeader, Typography } from '@mui/material'
 
 
 interface State {
@@ -53,6 +53,23 @@ const FormLayouts = () => {
 
   }
 
+  const handleSave = async (bfIndex: string) => {
+    await fetch('http://localhost:3000/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "name": "Teste",
+        "email": "teste@teste.com.br",
+        "birthYear": 1990,
+        "bodyFatIndex": Number(bfIndex)
+      })
+    }).then(res => res.json())
+      .then(json => console.log(json))
+      .catch(err => console.log(err))
+  }
+
 
   return (
     <DatePickerWrapper>
@@ -71,6 +88,9 @@ const FormLayouts = () => {
                 {`Percentual de gordura: ${percent}`}
               </Typography>
             </CardContent>
+            <CardActions>
+              <Button onClick={() => handleSave(percent)} variant='contained'>Salvar</Button>
+            </CardActions>
           </Card>
         </Grid>}
       </Grid>
